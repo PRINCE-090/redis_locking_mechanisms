@@ -1,12 +1,11 @@
-
 import express from "express";
-import bookingRoutes from "./modules/booking/booking.route.js"
-
 
 const app = express();
 
+app.use(express.json());
 
-
-app.use('/api', bookingRoutes);
+app.get("/", (req, res) => {
+  res.send("Redis Locking API is running 🚀");
+});
 
 export default app;
