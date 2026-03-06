@@ -1,17 +1,10 @@
-import { createClient } from 'redis';
+import { createClient } from "redis";
 
-
-const redisClient = createClient();
-
-
-redisClient.on('error', (err) => {
-    console.error('Redis Error:', err);
+export const redisClient = createClient({
+    url: process.env.REDIS_URL
 });
 
-
-const connectRedis = async () => {
+export const connectRedis = async () => {
     await redisClient.connect();
-    console.log('✅ Redis Connected');
+    console.log("✅ Redis Connected");
 };
-
-export { redisClient, connectRedis };
